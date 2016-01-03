@@ -18,11 +18,14 @@ out
 build
 .gradle
 
+# forge
+*changelog.txt
+
 # other
 eclipse
 run
 decomp.bat
 recompile.bat
 
-Peersonal Plan Stuff
+Personal Plan Stuff
 Removed Stuff
