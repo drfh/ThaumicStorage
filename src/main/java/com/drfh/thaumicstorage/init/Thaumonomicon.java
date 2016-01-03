@@ -13,6 +13,7 @@ import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
+import thaumcraft.api.research.ResearchPage;
 
 
 public class Thaumonomicon {
@@ -28,19 +29,47 @@ public class Thaumonomicon {
 		//	Create Thaumonomicon Page
 		ResearchCategories.registerCategory(catName,null, icon, back,null);
 		
+	//	ResearchCategoryList	THAUMATURGY=ResearchCategories.getResearchList("THAUMATURGY");
 		ResearchCategoryList	ALCHEMY=ResearchCategories.getResearchList("ALCHEMY");
+	//	ResearchCategoryList	ARTIFICE=ResearchCategories.getResearchList("ARTIFICE");
 		ResearchItem			crucRes=ALCHEMY.research.get("CRUCIBLE");
 			
-		copy(crucRes,"TC.CRUCIBLE",catName,-4,-4).setHidden().registerResearchItem();
+		copy(crucRes,"TS.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
+		
+//		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("METALLURGY"),"TB.METALLURGY",catName,0,5).setHidden().registerResearchItem();
+
+		//		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSION"),"TB.INFUSION",catName,0,-18).setHidden().registerResearchItem();
 		
 		//	Register items and aspects <???>
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal_block,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		
-		// Register Page Research
+		// Register Research Page
+		// Arcane Coal
+		new ResearchItem("TS.arcane_coal.page",catName,new AspectList().add(Aspect.ORDER,3),3,1,1,new ItemStack(TSItems.arcane_coal,1,0))
+		.setParents("TC.CRUCIBLE")
+		.setPages(
+			new ResearchPage("TS.CRUCIBLE")
+			).registerResearchItem().setParents("TS.CRUCIBLE");
 		
-		
+
+		// Register Research Page
+		// Arcane Coal Block
+		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,2,1,new ItemStack(TSItems.arcane_coal_block,1,0))
+		.setParents("TS.arcane_coal.page")
+		.setPages(
+			new ResearchPage("TS.CRUCIBLE")
+			).registerResearchItem();
+
+		// Register Research Page
+		// Arcane Torch Dispenser
+		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,2,1,new ItemStack(TSItems.arcane_coal_block,1,0))
+		.setParents("TS.arcane_coal.page")
+		.setPages(
+			new ResearchPage("TS.CRUCIBLE")
+			).registerResearchItem();
+
 		//	Define Recipes
 		
 		// ThaumicStorage.archane_coal

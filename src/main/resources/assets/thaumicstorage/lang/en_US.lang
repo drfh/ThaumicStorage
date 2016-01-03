@@ -12,3 +12,8 @@ tc.research_category.ThaumicStorage=Thaumic Storage
 
 #	GUI
 itemGroup.tabCreativeTS=Thaumic Storage
+
+#	Research
+TS.arcane_coal.page=Arcane Coal Research
+TS.arcane_coal_blcok.page=Arcane Coal Block Research
+

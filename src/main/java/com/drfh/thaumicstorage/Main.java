@@ -24,14 +24,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @Mod(modid=Reference.MOD_ID, name=Reference.MOD_NAME, version=Reference.VERSION, dependencies=Reference.deps)
 
 public class Main {
-	
+
 	@SidedProxy(modId=Reference.MOD_ID, clientSide=Reference.CLIENT_PROXY_CLASS, serverSide=Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy	proxy;
-	
+
 	public static Logger			logger = LogManager.getLogger("ThaumicStorage");
 	public static TSCreativeTab		tscreative = new TSCreativeTab("tabCreativeTS");
 	public static Main				instance;
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
 	{
@@ -41,27 +41,24 @@ public class Main {
 		TSBlocks.init();
 		TSBlocks.register();
 		MinecraftForge.EVENT_BUS.register(new TorchHandler());
-}
+	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent e)
 	{
 		proxy.init(e);
-		
+
 		GameRegistry.registerFuelHandler(new TSFuelHandler());
-		
+
 		GameRegistry.addSmelting(new ItemStack(TSItems.arcane_coal),new ItemStack(TSItems.arcane_coal),0);
 		GameRegistry.addSmelting(new ItemStack(TSItems.arcane_coal_block),new ItemStack(TSItems.arcane_coal_block),0);
-		
-//		GameRegistry.registerCraftingHandler();
 	}
-	
+
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e)
 	{
 		proxy.postInit(e);
 		SmeltingRecipes.init();
 		Thaumonomicon.setup();
-		
 	}
 }
