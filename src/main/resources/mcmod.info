@@ -1,0 +1,16 @@
+[
+{
+  "modid": "thaumicstorage",
+  "name": "Thaumic Storage",
+  "description": "Thaumcraft 5 Storage Items addon.",
+  "version": "0.1",
+  "mcversion": "1.8",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["DRFH"],
+  "credits": "The Forge and FML guys, Azanor, BloodMagic team, chicken_bones.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["Thaumcraft"]
+}
+]

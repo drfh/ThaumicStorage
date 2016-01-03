@@ -1,0 +1,14 @@
+
+#	Item Localization
+item.arcane_coal.name=Arcane Coal
+item.arcane_coal_block.name=Arcane Coal Block
+item.arcane_torch_dispenser.name=Arcane Torch Dispenser
+
+#	Block Localization
+block.arcane_coal_block.name=Arcane Coal Block
+
+#	Thaumcraft Stuff
+tc.research_category.ThaumicStorage=Thaumic Storage
+
+#	GUI
+itemGroup.tabCreativeTS=Thaumic Storage

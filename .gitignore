@@ -1,0 +1,28 @@
+# eclipse
+bin
+libs
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+decomp.bat
+recompile.bat
+
+Peersonal Plan Stuff
+Removed Stuff
