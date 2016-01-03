@@ -35,13 +35,4 @@ public class ArcaneCoal extends EnergyItem
 		Main.logger.info("setContainerItem: "+containerItem);
 		return this;
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack item, EntityPlayer play, List l, boolean par4)
-	{
-		//	Main.logger.info("ArcaneCoal addInformation:(NBT==NULL)");
-		super.addInformation(item,play,l,par4);
-	}
-
 }

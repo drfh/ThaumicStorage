@@ -40,18 +40,4 @@ public class ArcaneCoalBlock extends EnergyItem
 	{
 		return true;
 	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack item, EntityPlayer play, List l, boolean par4)
-	{
-	//	Main.logger.info("ArcaneCoalBlock addInformation:(NBT==NULL)");
-	//	super.addInformation(item,play,l,par4);
-	}
-
-	/*	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		return true;
-	}
-*/
 }
