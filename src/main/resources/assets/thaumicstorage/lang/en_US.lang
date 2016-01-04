@@ -43,10 +43,10 @@ tc.research_text.TS.r.arcane_coalS=How peculiar times... 2!
 TS.p0.arcane_coalS=Long text about supercharge.
 
 tc.research_name.TS.r.arcane_coal_block=Arcane Coal Block
-tc.research_name.TS.r.arcane_coal_block=More fuel is always better.
+tc.research_text.TS.r.arcane_coal_block=More fuel is always better.
 TS.p0.arcane_coal_block=Long text about more is always better.
 
 tc.research_name.TS.r.arcane_torch_dispenser=Arcane Torch Dispensor
-tc.research_name.TS.r.arcane_torch_dispenser=Free Torches per vis
+tc.research_text.TS.r.arcane_torch_dispenser=Free Torches per vis
 TS.p0.arcane_torch_dispenser=Ah, Finaly a light source that lasts as long as you do.  An upgrade to your Archane Coal to make it more usefull.  After researching reusable Archane Coal, you have decided that you are annoyed with carrying stacks of torches with you everywhere you go.  You are sure it can help with mobile lighting in your fast paced life, but that may be a tall order.<BR>For now you just want an abundant supply of torches that won't put a dent in your pocket.
 TS.p1.arcane_torch_dispenser=<BR>{Crafting Picture}<BR>Be carefull of flux.
