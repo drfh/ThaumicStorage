@@ -1,5 +1,6 @@
 package com.drfh.thaumicstorage.init;
 
+import net.minecraft.enchantment.EnchantmentFireAspect;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -34,7 +35,7 @@ public class Thaumonomicon {
 	//	ResearchCategoryList	ARTIFICE=ResearchCategories.getResearchList("ARTIFICE");
 		ResearchItem			crucRes=ALCHEMY.research.get("CRUCIBLE");
 			
-		copy(crucRes,"TS.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
+		copy(crucRes,"TC.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
 		
 //		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("METALLURGY"),"TB.METALLURGY",catName,0,5).setHidden().registerResearchItem();
 
@@ -47,27 +48,40 @@ public class Thaumonomicon {
 		
 		// Register Research Page
 		// Arcane Coal
-		new ResearchItem("TS.arcane_coal.page",catName,new AspectList().add(Aspect.ORDER,3),3,1,1,new ItemStack(TSItems.arcane_coal,1,0))
+		new ResearchItem("TS.r.arcane_coal",catName,new AspectList().add(Aspect.ORDER,3),3,0,1,new ItemStack(TSItems.arcane_coal,1,0))
 		.setParents("TC.CRUCIBLE")
 		.setPages(
-			new ResearchPage("TS.CRUCIBLE")
-			).registerResearchItem().setParents("TS.CRUCIBLE");
+				new ResearchPage("TS.p0.arcane_coal"),
+				new ResearchPage("TS.p1.arcane_coal"),
+				new ResearchPage("TS.p2.arcane_coal"),
+				new ResearchPage("TS.p3.arcane_coal")
+			).registerResearchItem();
 		
+		// Register Research Page
+		// Arcane Coal super-charged
+		new ResearchItem("TS.r.arcane_coalS",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),4,-1,1,
+					new ItemStack(TSItems.arcane_coal,1,1))
+		.setParents("TS.r.arcane_coal")
+		.setSecondary()
+		.setPages(
+			new ResearchPage("TS.p0.arcane_coalS")
+			).registerResearchItem();
 
 		// Register Research Page
 		// Arcane Coal Block
-		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,2,1,new ItemStack(TSItems.arcane_coal_block,1,0))
-		.setParents("TS.arcane_coal.page")
+		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,1,1,new ItemStack(TSItems.arcane_coal_block,1,0))
+		.setParents("TS.r.arcane_coal")
 		.setPages(
-			new ResearchPage("TS.CRUCIBLE")
+			new ResearchPage("TS.p0.arcane_coal_block")
 			).registerResearchItem();
 
 		// Register Research Page
 		// Arcane Torch Dispenser
-		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,2,1,new ItemStack(TSItems.arcane_coal_block,1,0))
-		.setParents("TS.arcane_coal.page")
+		new ResearchItem("TS.r.arcane_torch_dispenser",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),6,-2,1,new ItemStack(TSItems.arcane_torch_dispenser,1,0))
+		.setParents("TS.r.arcane_coalS")
 		.setPages(
-			new ResearchPage("TS.CRUCIBLE")
+				new ResearchPage("TS.p0.arcane_torch_dispenser"),
+				new ResearchPage("TS.p1.arcane_torch_dispenser")
 			).registerResearchItem();
 
 		//	Define Recipes
