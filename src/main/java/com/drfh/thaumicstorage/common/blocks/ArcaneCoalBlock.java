@@ -1,6 +1,8 @@
-package com.drfh.thaumicstorage.common.items;
+package com.drfh.thaumicstorage.common.blocks;
 
 import java.util.List;
+
+import com.drfh.thaumicstorage.common.items.EnergyItem;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
