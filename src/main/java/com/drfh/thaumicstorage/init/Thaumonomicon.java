@@ -77,7 +77,7 @@ public class Thaumonomicon {
 
 		// Register Research Page
 		// Arcane Torch Dispenser
-		new ResearchItem("TS.r.arcane_torch_dispenser",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),6,-2,1,new ItemStack(TSItems.arcane_torch_dispenser,1,0))
+		new ResearchItem("TS.r.arcane_torch_dispenser",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),5,-2,1,new ItemStack(TSItems.arcane_torch_dispenser,1,0))
 		.setParents("TS.r.arcane_coalS")
 		.setPages(
 				new ResearchPage("TS.p0.arcane_torch_dispenser"),
