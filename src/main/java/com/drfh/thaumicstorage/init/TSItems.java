@@ -2,8 +2,8 @@ package com.drfh.thaumicstorage.init;
 
 import com.drfh.thaumicstorage.Main;
 import com.drfh.thaumicstorage.Reference;
+import com.drfh.thaumicstorage.common.blocks.ArcaneCoalBlock;
 import com.drfh.thaumicstorage.common.items.ArcaneCoal;
-import com.drfh.thaumicstorage.common.items.ArcaneCoalBlock;
 import com.drfh.thaumicstorage.common.items.ArcaneTorchDispenser;
 
 import net.minecraft.client.Minecraft;
