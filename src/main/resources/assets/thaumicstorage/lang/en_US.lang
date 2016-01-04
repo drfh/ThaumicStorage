@@ -13,7 +13,40 @@ tc.research_category.ThaumicStorage=Thaumic Storage
 #	GUI
 itemGroup.tabCreativeTS=Thaumic Storage
 
-#	Research
-TS.arcane_coal.page=Arcane Coal Research
-TS.arcane_coal_blcok.page=Arcane Coal Block Research
 
+#  
+# Special formatting codes:
+# <BR> or <BR/>         Paragraph break (<BR/> is included for people using XML for their localization)
+# <LINE> or <LINE/>     Insert a fancy linebreak between sections of text.
+# <IMG>...</IMG>  Insert a centered image into text. Parameters are separated by ':' and are:
+#                    - mod resource location name
+#                    - png file location (assumed to be a 256x256 texture, a sub-image will be grabbed from this png as specified below)
+#                    - x location of sub-image in png
+#                    - y location of sub-image in png
+#                    - x size of sub-image (255 if full x size of png must be used)
+#                    - y size of sub-image (255 if full y size of png must be used)
+#                    - scaling - 1.0 for normal 256x256 images, or smaller for proportionately smaller .png files (a 16x16 image will be 0.0625)   
+#               Examples: 
+#                   <IMG>thaumcraft:textures/gui/gui_researchbook.png:24:184:96:4:1.0</IMG>   <-- line break image as used in <LINE> above
+#                   <IMG>thaumcraft:textures/items/alumentum.png:0:0:255:255:0.0625</IMG>     <-- alumentum item icon
+
+#	Research
+tc.research_name.TS.r.arcane_coal=Arcane Coal
+tc.research_text.TS.r.arcane_coal=Reusable coal?
+TS.p0.arcane_coal=Your frustration with the lack of fuel you have been able to gather have.  While heavily involved into your study of thaumic research, you have not been able to keep up with demand for fuel in your furnaces and other small devices.<BR>This frustration has lead you to conclude that there must be a better way.  Your study of the Thauminomicon has led you to conclude that there is always a better way.<BR>While coal and charcoal are plentyfull you hate to open a fueled device only to find it empty an your fuel buried in some chest some where.
+TS.p1.arcane_coal=Combinding<BR>* Great Wood<BR>* Fire Shard<BR>* Thaumium Nugets<BR>* Coal Block<BR>* Alumentum<BR>you have something that holds more burning power than a lump of coal but does not disintegrate when used.<LINE><IMG>thaumcraft:textures/items/alumentum.png:0:0:255:255:0.0625</IMG>
+TS.p2.arcane_coal=This is just a small step down a path that most would scoff at even existing.<BR>None the less and you are sure that is more to this story......<BR> and the end of this research, likely on a far horizon, you see in your mind a warped and dangerous place.  Let it not be said that a little danger stopped any thaumaturgy, especialy one as brillient as you.<BR>Ow well, lets SCAN over this new item and see what we can learn from it.
+TS.p3.arcane_coal=<LINE><CENTER><B>How to use<B></CENTER><LINE>1.  Used in any fuel slot.<BR>2.  Craft with stick(s) to make<BR>     torches.<BR>3.  Craft with Coal/Blaze Rod to recharge.<BR>4.  Put in top of furnace to recharge.
+
+tc.research_name.TS.r.arcane_coalS=Arcane Coal Enhanced
+tc.research_text.TS.r.arcane_coalS=How peculiar times... 2!
+TS.p0.arcane_coalS=Long text about supercharge.
+
+tc.research_name.TS.r.arcane_coal_block=Arcane Coal Block
+tc.research_name.TS.r.arcane_coal_block=More fuel is always better.
+TS.p0.arcane_coal_block=Long text about more is always better.
+
+tc.research_name.TS.r.arcane_torch_dispenser=Arcane Torch Dispensor
+tc.research_name.TS.r.arcane_torch_dispenser=Free Torches per vis
+TS.p0.arcane_torch_dispenser=Ah, Finaly a light source that lasts as long as you do.  An upgrade to your Archane Coal to make it more usefull.  After researching reusable Archane Coal, you have decided that you are annoyed with carrying stacks of torches with you everywhere you go.  You are sure it can help with mobile lighting in your fast paced life, but that may be a tall order.<BR>For now you just want an abundant supply of torches that won't put a dent in your pocket.
+TS.p1.arcane_torch_dispenser=<BR>{Crafting Picture}<BR>Be carefull of flux.
