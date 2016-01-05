@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -36,29 +37,17 @@ public class Main {
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		proxy.preInit(e);
-		TSItems.init();
-		TSItems.register();
-		TSBlocks.init();
-		TSBlocks.register();
-		MinecraftForge.EVENT_BUS.register(new TorchHandler());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent e)
 	{
 		proxy.init(e);
-
-		GameRegistry.registerFuelHandler(new TSFuelHandler());
-
-		GameRegistry.addSmelting(new ItemStack(TSItems.arcane_coal),new ItemStack(TSItems.arcane_coal),0);
-		GameRegistry.addSmelting(new ItemStack(TSItems.arcane_coal_block),new ItemStack(TSItems.arcane_coal_block),0);
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e)
 	{
 		proxy.postInit(e);
-		SmeltingRecipes.init();
-		Thaumonomicon.setup();
 	}
 }
