@@ -30,13 +30,19 @@ public class Main {
 	public static CommonProxy	proxy;
 
 	public static Logger			logger = LogManager.getLogger("ThaumicStorage");
-	public static TSCreativeTab		tscreative = new TSCreativeTab("tabCreativeTS");
 	public static Main				instance;
+	public static TSCreativeTab		tscreative = new TSCreativeTab("tabCreativeTS");
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		proxy.preInit(e);
+		
+		TSItems.init();
+		TSItems.register();
+		TSBlocks.init();
+		TSBlocks.register();
+		MinecraftForge.EVENT_BUS.register(new TorchHandler());
 	}
 
 	@EventHandler

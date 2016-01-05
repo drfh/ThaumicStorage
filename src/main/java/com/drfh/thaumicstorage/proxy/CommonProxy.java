@@ -24,11 +24,6 @@ public class CommonProxy
 	{
 		FMLInterModComms.sendRuntimeMessage(Reference.MOD_ID,"VersionChecker","addVersionCheck",Reference.version_check_url);
 		
-		TSItems.init();
-		TSItems.register();
-		TSBlocks.init();
-		TSBlocks.register();
-		MinecraftForge.EVENT_BUS.register(new TorchHandler());
 	}
 	
 	public void init(FMLInitializationEvent e)
