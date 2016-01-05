@@ -4,7 +4,7 @@ Thaumcraft Addon mod
 ---
 # Credits (Send these people some $love$)
 
-I would like to thank and mention people and resources that were used in the development of this mod.
+I would like to thank and mention people and resources that were used in the development of this mod.  More to come as I get time.
 
 Thaumcraft 5 - **Azanor** (https://www.patreon.com/azanor)
 
