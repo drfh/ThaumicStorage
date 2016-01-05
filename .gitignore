@@ -21,6 +21,9 @@ build
 # forge
 *changelog.txt
 
+# API and other code
+src/api/
+
 # other
 eclipse
 run
