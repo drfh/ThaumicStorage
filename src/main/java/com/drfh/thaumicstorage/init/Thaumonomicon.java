@@ -48,7 +48,7 @@ public class Thaumonomicon {
 		
 		// Register Research Page
 		// Arcane Coal
-		new ResearchItem("TS.r.arcane_coal",catName,new AspectList().add(Aspect.ORDER,3),3,0,1,new ItemStack(TSItems.arcane_coal,1,0))
+		new ResearchItem("TS.r.arcane_coal",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),3,0,1,new ItemStack(TSItems.arcane_coal,1,0))
 		.setParents("TC.CRUCIBLE")
 		.setPages(
 				new ResearchPage("TS.p0.arcane_coal"),
