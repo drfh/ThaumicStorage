@@ -14,8 +14,8 @@ public class ArcaneCoalBlock extends EnergyItem
 	public ArcaneCoalBlock()
 	{
 		super();
-		this.setMaxDamage(1800*10);
-		super.setFuelLevel(1800*10);
+		this.setMaxDamage(2400*10);
+		super.setFuelLevel(2400*10);
 		this.setBurnTime(200);
 	}
 

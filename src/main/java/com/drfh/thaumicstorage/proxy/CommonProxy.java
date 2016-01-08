@@ -3,6 +3,7 @@ package com.drfh.thaumicstorage.proxy;
 import com.drfh.thaumicstorage.Main;
 import com.drfh.thaumicstorage.Reference;
 import com.drfh.thaumicstorage.TSFuelHandler;
+import com.drfh.thaumicstorage.init.SmeltingHandler;
 import com.drfh.thaumicstorage.init.SmeltingRecipes;
 import com.drfh.thaumicstorage.init.TSBlocks;
 import com.drfh.thaumicstorage.init.TSItems;
@@ -11,6 +12,7 @@ import com.drfh.thaumicstorage.init.TorchHandler;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -24,6 +26,13 @@ public class CommonProxy
 	{
 		FMLInterModComms.sendRuntimeMessage(Reference.MOD_ID,"VersionChecker","addVersionCheck",Reference.version_check_url);
 		
+		TSItems.init();
+		TSItems.register();
+		TSBlocks.init();
+		TSBlocks.register();
+		MinecraftForge.EVENT_BUS.register(new TorchHandler());
+		
+		addEventAndSpecialEventBus(new SmeltingHandler());
 	}
 	
 	public void init(FMLInitializationEvent e)
@@ -38,5 +47,11 @@ public class CommonProxy
 	{
 		SmeltingRecipes.init();
 		Thaumonomicon.setup();
+	}
+	
+	private static void addEventAndSpecialEventBus(Object o) {
+		MinecraftForge.EVENT_BUS.register(o);
+		FMLCommonHandler.instance().bus().register(o);
+		Main.logger.info("Registered event handler: " + o.getClass());
 	}
 }

@@ -37,12 +37,6 @@ public class Main {
 	public void preInit(FMLPreInitializationEvent e)
 	{
 		proxy.preInit(e);
-		
-		TSItems.init();
-		TSItems.register();
-		TSBlocks.init();
-		TSBlocks.register();
-		MinecraftForge.EVENT_BUS.register(new TorchHandler());
 	}
 
 	@EventHandler

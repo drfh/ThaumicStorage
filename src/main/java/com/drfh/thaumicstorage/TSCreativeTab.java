@@ -9,7 +9,6 @@ public class TSCreativeTab extends CreativeTabs {
 	public TSCreativeTab(String label)
 	{
 		super(label);
-	//	this.setBackgroundImageName("item.png");
 	}
 	
 	@Override

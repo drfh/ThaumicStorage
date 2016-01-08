@@ -1,12 +1,17 @@
 package com.drfh.thaumicstorage.init;
 
+import com.drfh.thaumicstorage.Main;
 import com.drfh.thaumicstorage.common.items.ArcaneTorchDispenser;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aura.AuraHelper;
@@ -16,7 +21,6 @@ public class TorchHandler
 	private static final int NOTORCHESFOUND = -1;
 	private boolean processingEvent = false;
 
-
 	@SubscribeEvent
 	public void playerInteractEventHandler(PlayerInteractEvent event)
 	{
@@ -25,11 +29,22 @@ public class TorchHandler
 			return;
 
 		ItemStack	itemInHand=event.entityPlayer.inventory.getCurrentItem();
-
+		
 		if(notHoldingDispenser(itemInHand))
 			return;
-		if(!targetBlockAcceptsTorches(event))
-			return;
+		
+		BlockPos	pos=event.pos;
+		Block		block=event.world.getBlockState(pos).getBlock();
+		
+		if(!targetBlockAcceptsTorches(event,pos))
+			if(targetBlockIsGrass(block))
+			{
+				pos=pos.down();
+				if(!targetBlockAcceptsTorches(event,pos))
+					return;
+			}
+			else
+				return;
 		
 		if(AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0&&AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0)
 		{
@@ -41,27 +56,30 @@ public class TorchHandler
 		ItemStack	torchStack=new ItemStack(Blocks.torch,1);
 
 		processingEvent=true;
-		useItem(event,torchStack);
+		useItem(event,pos,torchStack);
 
 		event.entityPlayer.openContainer.detectAndSendChanges();
 		processingEvent=false;
 		event.setCanceled(true);
 	}
 
-	private void useItem(PlayerInteractEvent event, ItemStack torchStack)
+	private void useItem(PlayerInteractEvent event,BlockPos pos,ItemStack torchStack)
 	{
 		((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
-		.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, event.pos,
-				event.face, 0.5f, 0.5f, 0.5f);
+		.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,
+				EnumFacing.UP, 0.5f, 0.5f, 0.5f);
 	}
 
-	private boolean targetBlockAcceptsTorches(PlayerInteractEvent event)
+	private boolean targetBlockAcceptsTorches(PlayerInteractEvent event,BlockPos pos)
 	{
-		Block	block=event.world.getBlockState(event.pos).getBlock();
-		return block.canPlaceTorchOnTop(event.world, event.pos);
-
+		Block	block=event.world.getBlockState(pos).getBlock();
+		return block.canPlaceTorchOnTop(event.world, pos);
 	}
 
+	private boolean targetBlockIsGrass(Block block)
+	{
+		return (block.isEqualTo(block,Blocks.grass))||(block.isEqualTo(block,Blocks.tallgrass));
+	}
 
 	private boolean eventNotRelevant(PlayerInteractEvent event)
 	{

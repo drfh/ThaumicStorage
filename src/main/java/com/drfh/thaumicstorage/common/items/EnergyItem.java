@@ -39,14 +39,36 @@ public class EnergyItem extends Item
 
 	public void setFuelLevel(int level)
 	{
-		fuelLevel=level;
+		int		max=this.getMaxDamage();
+		NBTTagCompound	nbt=new NBTTagCompound();
+		
+		if(level>max)
+			fuelLevel=max;
+		else
+			fuelLevel=level;
+		
+//		nbt.setInteger("Damage",max-fuelLevel);
+//		copiedStack.setTagCompound(nbt);
 	}
 
 	public int getFuelDamage()
 	{
 		return fuelLevel;
 	}
-
+	
+	public boolean canRecharge()
+	{
+		return false;
+	}
+	
+	public void rechargeFuel(int ammount)
+	{
+		if(fuelLevel+ammount<this.getMaxDamage())
+			fuelLevel+=ammount;
+		else
+			fuelLevel=this.getMaxDamage();
+	}
+	
 	@Override
 	public ItemStack getContainerItem(ItemStack itemStack)
 	{
@@ -83,7 +105,11 @@ public class EnergyItem extends Item
 			nbt=new NBTTagCompound();
 			nbt.setInteger("Damage",0);
 		}
-		super.onCreated(stack, worldIn, playerIn);
+/*		else
+		{
+			nbt.setInteger("Damage",stack.getMaxDamage()-fuelLevel);
+		}
+*/		super.onCreated(stack, worldIn, playerIn);
 	}
 
 	@Override
@@ -99,7 +125,7 @@ public class EnergyItem extends Item
 			nbt=new NBTTagCompound();
 			nbt.setInteger("Damage",0);
 		}
-		dam=nbt.getInteger("Damage")+this.getBurnTime();
+		dam=nbt.getInteger("Damage");
 		max=this.getMaxDamage();
 		
 		super.addInformation(item,play,tooltip,par4);

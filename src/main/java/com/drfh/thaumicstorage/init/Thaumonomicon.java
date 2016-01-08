@@ -1,6 +1,5 @@
 package com.drfh.thaumicstorage.init;
 
-import net.minecraft.enchantment.EnchantmentFireAspect;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -10,6 +9,8 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.crafting.CrucibleRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
@@ -17,8 +18,8 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 
 
-public class Thaumonomicon {
-
+public class Thaumonomicon
+{
 	public static final String	catName="ThaumicStorage";
 	public static final ResourceLocation icon = new ResourceLocation("thaumicstorage","textures/thaumonomicon/ThaumicStorge.png");
 	public static final ResourceLocation back = new ResourceLocation("thaumicstorage","textures/thaumonomicon/tileable-classic-nebula-3120259-h.jpg");
@@ -34,60 +35,34 @@ public class Thaumonomicon {
 		ResearchCategoryList	ALCHEMY=ResearchCategories.getResearchList("ALCHEMY");
 	//	ResearchCategoryList	ARTIFICE=ResearchCategories.getResearchList("ARTIFICE");
 		ResearchItem			crucRes=ALCHEMY.research.get("CRUCIBLE");
-			
-		copy(crucRes,"TC.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
 		
-//		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("METALLURGY"),"TB.METALLURGY",catName,0,5).setHidden().registerResearchItem();
-
-		//		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSION"),"TB.INFUSION",catName,0,-18).setHidden().registerResearchItem();
+		copy(crucRes,"TC.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
+//		copy(crucRes,"TC.CRUCIBLE",catName,0,0).setHidden().registerResearchItem();
+		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("METALLURGY"),"TS.ALCHEMY",catName,-3,-5).setHidden().registerResearchItem();
+//		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("METALLURGY"),"TS.ALCHEMY",catName,-3,-5).setHidden().registerResearchItem();
 		
 		//	Register items and aspects <???>
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal_block,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
+//		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		
-		// Register Research Page
-		// Arcane Coal
-		new ResearchItem("TS.r.arcane_coal",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),3,0,1,new ItemStack(TSItems.arcane_coal,1,0))
-		.setParents("TC.CRUCIBLE")
-		.setPages(
-				new ResearchPage("TS.p0.arcane_coal"),
-				new ResearchPage("TS.p1.arcane_coal"),
-				new ResearchPage("TS.p2.arcane_coal"),
-				new ResearchPage("TS.p3.arcane_coal")
-			).registerResearchItem();
+		//	Crucible Recipe
+		//	Clean Clay - Costs Permutatio(EXCHANGE)
+		CrucibleRecipe clay3Rec = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.clay,1,0),new AspectList().add(Aspect.ENTROPY,1));
+		CrucibleRecipe clay3Rec2 = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.hardened_clay,1,0),new AspectList().add(Aspect.ENTROPY,1));
+		CrucibleRecipe clay3Rec3 = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.stained_hardened_clay,1,OreDictionary.WILDCARD_VALUE),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
+		CrucibleRecipe arcaneCoalS_Rec = new CrucibleRecipe("TS.ALCHEMY",new ItemStack(TSItems.arcane_coalS,1,0),new ItemStack(TSItems.arcane_coal,1,0),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
+//		CrucibleRecipe clay3Rec2 = new CrucibleRecipe("TS.ALCHEMY",new ItemStack(Blocks.clay,3,0),new ItemStack(Blocks.stained_hardened_clay,1,0),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
 		
-		// Register Research Page
-		// Arcane Coal super-charged
-		new ResearchItem("TS.r.arcane_coalS",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),4,-1,1,
-					new ItemStack(TSItems.arcane_coal,1,1))
-		.setParents("TS.r.arcane_coal")
-		.setSecondary()
-		.setPages(
-			new ResearchPage("TS.p0.arcane_coalS")
-			).registerResearchItem();
-
-		// Register Research Page
-		// Arcane Coal Block
-		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,1,1,new ItemStack(TSItems.arcane_coal_block,1,0))
-		.setParents("TS.r.arcane_coal")
-		.setPages(
-			new ResearchPage("TS.p0.arcane_coal_block")
-			).registerResearchItem();
-
-		// Register Research Page
-		// Arcane Torch Dispenser
-		new ResearchItem("TS.r.arcane_torch_dispenser",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),5,-2,1,new ItemStack(TSItems.arcane_torch_dispenser,1,0))
-		.setParents("TS.r.arcane_coalS")
-		.setPages(
-				new ResearchPage("TS.p0.arcane_torch_dispenser"),
-				new ResearchPage("TS.p1.arcane_torch_dispenser")
-			).registerResearchItem();
-
 		//	Define Recipes
+		ThaumcraftApi.getCraftingRecipes().add(clay3Rec);
+		ThaumcraftApi.getCraftingRecipes().add(clay3Rec2);
+		ThaumcraftApi.getCraftingRecipes().add(clay3Rec3);
+		ThaumcraftApi.getCraftingRecipes().add(arcaneCoalS_Rec);
 		
 		// ThaumicStorage.archane_coal
-		ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_coal),new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20).add(Aspect.EARTH, 10),new Object[]{
+		ShapedArcaneRecipe arcane_coal_rec=ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_coal),new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20).add(Aspect.EARTH, 10),new Object[]{
 				"121",
 				"343",
 				"151",
@@ -99,7 +74,7 @@ public class Thaumonomicon {
 			});
 		
 		// ThaumicStorage.archane_coal_block
-		ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_coal_block),new AspectList().add(Aspect.FIRE, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20),new Object[]{
+		ShapedArcaneRecipe arcane_coal_block_rec=ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_coal_block),new AspectList().add(Aspect.FIRE, 20).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20),new Object[]{
 				"111",
 				"111",
 				"111",
@@ -107,15 +82,66 @@ public class Thaumonomicon {
 			});
 		
 		// ThaumicStorage.arcane_torch_dispenser
-		ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_torch_dispenser),new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20).add(Aspect.EARTH, 10),new Object[]{
+		ShapedArcaneRecipe arcane_torch_dispenser_rec=ThaumcraftApi.addArcaneCraftingRecipe("",new ItemStack(TSItems.arcane_torch_dispenser),new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20).add(Aspect.EARTH, 10),new Object[]{
 				"121",
 				"131",
 				"141",
 				'1',new ItemStack(ItemsTC.plate,1,0),
 				'2',new ItemStack(Items.flint_and_steel,1,0),
-				'3',new ItemStack(TSItems.arcane_coal_block,1,0),
+				'3',new ItemStack(TSItems.arcane_coalS,1,0),
 				'4',new ItemStack(ItemsTC.wandRods,1,OreDictionary.WILDCARD_VALUE)
 			});
+		
+		// Register Research Page
+		// Arcane Coal
+		new ResearchItem("TS.r.arcane_coal",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),3,0,1,new ItemStack(TSItems.arcane_coal,1,0))
+		.setParents("TC.CRUCIBLE")
+		.setPages(
+				new ResearchPage("TS.p0.arcane_coal"),
+				new ResearchPage("TS.p1.arcane_coal"),
+				new ResearchPage(arcane_coal_rec),
+				new ResearchPage("TS.p2.arcane_coal"),
+				new ResearchPage("TS.p3.arcane_coal")
+			).registerResearchItem();
+		
+		// Register Research Page
+		// Arcane Coal super-charged
+		new ResearchItem("TS.r.arcane_coalS",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),4,-1,1,
+					new ItemStack(TSItems.arcane_coal,1,1))
+		.setParents("TS.r.arcane_coal")
+		.setSecondary()
+		.setPages(
+				new ResearchPage("TS.p0.arcane_coalS"),
+				new ResearchPage(arcaneCoalS_Rec)
+			).registerResearchItem();
+		
+		// Register Research Page
+		// Arcane Coal Block
+		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,1,1,new ItemStack(TSItems.arcane_coal_block,1,0))
+		.setParents("TS.r.arcane_coal")
+		.setPages(
+				new ResearchPage("TS.p0.arcane_coal_block"),
+				new ResearchPage(arcane_coal_block_rec)
+			).registerResearchItem();
+
+		// Register Research Page
+		// Arcane Torch Dispenser
+		new ResearchItem("TS.r.arcane_torch_dispenser",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),5,-2,1,new ItemStack(TSItems.arcane_torch_dispenser,1,0))
+		.setParents("TS.r.arcane_coalS")
+		.setPages(
+				new ResearchPage("TS.p0.arcane_torch_dispenser"),
+				new ResearchPage(arcane_torch_dispenser_rec)
+			).registerResearchItem();
+
+		new ResearchItem("TS.r.Entropy_clay",catName,new AspectList().add(Aspect.ENTROPY, 2),-1,-4,3,new ItemStack(Items.clay_ball,1,0))
+		.setParents("TS.ALCHEMY")
+		.setPages(
+			new ResearchPage("TS.p0.Entropy_clay"),
+			new ResearchPage(clay3Rec),
+			new ResearchPage(clay3Rec2),
+			new ResearchPage(clay3Rec3)
+			).registerResearchItem();
+		
 	}
 	
 	public static ResearchItem copy(ResearchItem res, String newKey, String newCat, int dC, int dR)
