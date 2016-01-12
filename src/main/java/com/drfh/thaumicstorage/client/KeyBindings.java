@@ -1,14 +1,23 @@
 package com.drfh.thaumicstorage.client;
 
+import org.lwjgl.input.Keyboard;
 
-public class KeyBindings 
+import com.drfh.thaumicstorage.Reference;
+
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+
+public class KeyBindings
 {
-//	public static KeyBinding omegaTest;
-	
-	public static void init()
-	{
-//		omegaTest = new KeyBinding("key.ping", Keyboard.KEY_O, "key.categories.alchemicalwizardry");
-//		
-//		ClientRegistry.registerKeyBinding(omegaTest);
-	}
+    // Declare two KeyBindings, ping and pong
+    public static KeyBinding	openTSGUI;
+
+    public static void init()
+    {
+    	openTSGUI = new KeyBinding("key.pong", Keyboard.KEY_U, "key.categories."+Reference.MOD_ID);
+
+        // Register both KeyBindings to the ClientRegistry
+        ClientRegistry.registerKeyBinding(openTSGUI);
+    }
+
 }

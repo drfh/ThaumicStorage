@@ -1,13 +1,5 @@
 package com.drfh.thaumicstorage.init;
 
-import com.drfh.thaumicstorage.Main;
-import com.drfh.thaumicstorage.common.items.EnergyItem;
-
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
-
-
 public class SmeltingHandler
 {
 /*	@SubscribeEvent

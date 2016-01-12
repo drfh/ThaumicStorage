@@ -3,23 +3,15 @@ package com.drfh.thaumicstorage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.drfh.thaumicstorage.init.SmeltingRecipes;
-import com.drfh.thaumicstorage.init.TSBlocks;
-import com.drfh.thaumicstorage.init.TSItems;
-import com.drfh.thaumicstorage.init.Thaumonomicon;
-import com.drfh.thaumicstorage.init.TorchHandler;
 import com.drfh.thaumicstorage.proxy.CommonProxy;
 
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 
 @Mod(modid=Reference.MOD_ID, name=Reference.MOD_NAME, version=Reference.VERSION, dependencies=Reference.deps)
@@ -32,6 +24,10 @@ public class Main {
 	public static Logger			logger = LogManager.getLogger("ThaumicStorage");
 	public static Main				instance;
 	public static TSCreativeTab		tscreative = new TSCreativeTab("tabCreativeTS");
+	
+	private static int modGuiIndex = 0;
+	public static final int GUI_ITEM_INV = modGuiIndex++;
+	public static Item itemstore;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)

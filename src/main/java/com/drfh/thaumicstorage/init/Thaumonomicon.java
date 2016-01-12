@@ -44,21 +44,20 @@ public class Thaumonomicon
 		//	Register items and aspects <???>
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_coal_block,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
-		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
+		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 20));
 //		ThaumcraftApi.registerObjectTag(new ItemStack(TSItems.arcane_torch_dispenser,1,OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 8).add(Aspect.LIGHT, 6));
 		
 		//	Crucible Recipe
-		//	Clean Clay - Costs Permutatio(EXCHANGE)
-		CrucibleRecipe clay3Rec = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.clay,1,0),new AspectList().add(Aspect.ENTROPY,1));
-		CrucibleRecipe clay3Rec2 = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.hardened_clay,1,0),new AspectList().add(Aspect.ENTROPY,1));
-		CrucibleRecipe clay3Rec3 = new CrucibleRecipe("TS.r.Entropy_clay",new ItemStack(Items.clay_ball,3,0),new ItemStack(Blocks.stained_hardened_clay,1,OreDictionary.WILDCARD_VALUE),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
-		CrucibleRecipe arcaneCoalS_Rec = new CrucibleRecipe("TS.ALCHEMY",new ItemStack(TSItems.arcane_coalS,1,0),new ItemStack(TSItems.arcane_coal,1,0),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
-//		CrucibleRecipe clay3Rec2 = new CrucibleRecipe("TS.ALCHEMY",new ItemStack(Blocks.clay,3,0),new ItemStack(Blocks.stained_hardened_clay,1,0),new AspectList().add(Aspect.ENTROPY,1).add(Aspect.WATER,1).add(Aspect.EXCHANGE,1));
+		//	Clean Clay - Costs Permutatio(EXCHANGE)String
+		
+		ItemStack		clay3Rec_cat[]={new ItemStack(Blocks.clay,1,0),new ItemStack(Blocks.hardened_clay,1,0),new ItemStack(Blocks.stained_hardened_clay,1,0)};
+		CrucibleRecipe clay3Rec = new CrucibleRecipe(new String[] {"TS.r.Entropy_clay"},new ItemStack(Items.clay_ball,3,0),clay3Rec_cat,new AspectList().add(Aspect.ENTROPY,1));
+
+		ItemStack		arcaneCoalS_cat[]={new ItemStack(TSItems.arcane_coal,1,0)};
+		CrucibleRecipe arcaneCoalS_Rec = new CrucibleRecipe(new String[] {"TS.ALCHEMY"},new ItemStack(TSItems.arcane_coalS,1,0),arcaneCoalS_cat,new AspectList().add(Aspect.FIRE,32).add(Aspect.ENERGY,32).add(Aspect.EXCHANGE,20).add(Aspect.LIGHT,16));
 		
 		//	Define Recipes
 		ThaumcraftApi.getCraftingRecipes().add(clay3Rec);
-		ThaumcraftApi.getCraftingRecipes().add(clay3Rec2);
-		ThaumcraftApi.getCraftingRecipes().add(clay3Rec3);
 		ThaumcraftApi.getCraftingRecipes().add(arcaneCoalS_Rec);
 		
 		// ThaumicStorage.archane_coal
@@ -117,7 +116,7 @@ public class Thaumonomicon
 		
 		// Register Research Page
 		// Arcane Coal Block
-		new ResearchItem("TS.arcane_coal_block.page",catName,new AspectList().add(Aspect.ORDER,3),4,1,1,new ItemStack(TSItems.arcane_coal_block,1,0))
+		new ResearchItem("TS.r.arcane_coal_block",catName,new AspectList().add(Aspect.ORDER,3),4,1,1,new ItemStack(TSItems.arcane_coal_block,1,0))
 		.setParents("TS.r.arcane_coal")
 		.setPages(
 				new ResearchPage("TS.p0.arcane_coal_block"),
@@ -137,9 +136,9 @@ public class Thaumonomicon
 		.setParents("TS.ALCHEMY")
 		.setPages(
 			new ResearchPage("TS.p0.Entropy_clay"),
-			new ResearchPage(clay3Rec),
-			new ResearchPage(clay3Rec2),
-			new ResearchPage(clay3Rec3)
+			new ResearchPage(clay3Rec)
+		//	new ResearchPage(clay3Rec2),
+		//	new ResearchPage(clay3Rec3)
 			).registerResearchItem();
 		
 	}

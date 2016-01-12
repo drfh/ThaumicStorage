@@ -1,3 +1,0 @@
-* Add VersionChecker integration
-* Add NEI integration where needed.
-* Make sure there is correct oreDictionary compatability.

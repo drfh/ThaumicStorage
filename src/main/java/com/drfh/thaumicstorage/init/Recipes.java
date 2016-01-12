@@ -1,10 +1,9 @@
 package com.drfh.thaumicstorage.init;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import thaumcraft.api.items.ItemsTC;
 
 public class Recipes {
 //	@SuppressWarnings("unused")
@@ -15,15 +14,25 @@ public class Recipes {
 		
 //		GameRegistry.addSmelting(new ItemStack(Items.,1,0), new ItemStack(Items.coal,1,1), 0.15F);
 
-/*		GameRegistry.addShapedRecipe(new ItemStack(TSItems.arcane_coal),new Object[]{
-				"111",
-				"111",
-				"111",
-				'1',new ItemStack(ItemsTC.alumentum,1,0)
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.torch,1,0),new Object[]{
+				"12",
+				'1',new ItemStack(TSItems.arcane_coal,1,0),
+				'2',new ItemStack(Items.stick,1,0)
 				});
 
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.torch,2,0),new Object[]{
+				"12",
+				'1',new ItemStack(TSItems.arcane_coal,1,0),
+				'2',new ItemStack(Items.stick,1,0)
+				});
 
-		GameRegistry.addShapedRecipe(new ItemStack(TSItems.arcane_coal),new Object[]{
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.torch,8,0),new Object[]{
+				"12",
+				'1',new ItemStack(TSItems.arcane_coal,1,0),
+				'2',new ItemStack(Items.stick,1,0)
+				});
+
+/*		GameRegistry.addShapedRecipe(new ItemStack(TSItems.arcane_coal),new Object[]{
 				"1",
 				"",
 				"",

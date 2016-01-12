@@ -1,6 +1,5 @@
 package com.drfh.thaumicstorage.init;
 
-import com.drfh.thaumicstorage.Main;
 import com.drfh.thaumicstorage.common.items.ArcaneTorchDispenser;
 
 import net.minecraft.block.Block;
@@ -9,9 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aura.AuraHelper;
@@ -35,10 +32,12 @@ public class TorchHandler
 		
 		BlockPos	pos=event.pos;
 		Block		block=event.world.getBlockState(pos).getBlock();
+		EnumFacing	face=event.face;
 		
 		if(!targetBlockAcceptsTorches(event,pos))
 			if(targetBlockIsGrass(block))
 			{
+				face=EnumFacing.UP;
 				pos=pos.down();
 				if(!targetBlockAcceptsTorches(event,pos))
 					return;
@@ -46,28 +45,27 @@ public class TorchHandler
 			else
 				return;
 		
+		processingEvent=true;
 		if(AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0&&AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0)
 		{
 			AuraHelper.drainAuraAvailable(event.world, event.pos, Aspect.AIR,1);
 			AuraHelper.drainAuraAvailable(event.world, event.pos, Aspect.FIRE,1);
 			//	Maybe take some more randomly to express inefficiency.
+
+			ItemStack	torchStack=new ItemStack(Blocks.torch,1);
+
+			((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
+			.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,
+					face, 0.5f, 0.5f, 0.5f);
+//			useItem(event,pos,torchStack);
 		}
-		
-		ItemStack	torchStack=new ItemStack(Blocks.torch,1);
-
-		processingEvent=true;
-		useItem(event,pos,torchStack);
-
-		event.entityPlayer.openContainer.detectAndSendChanges();
+//		event.entityPlayer.openContainer.detectAndSendChanges();
 		processingEvent=false;
 		event.setCanceled(true);
 	}
 
 	private void useItem(PlayerInteractEvent event,BlockPos pos,ItemStack torchStack)
 	{
-		((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
-		.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,
-				EnumFacing.UP, 0.5f, 0.5f, 0.5f);
 	}
 
 	private boolean targetBlockAcceptsTorches(PlayerInteractEvent event,BlockPos pos)
