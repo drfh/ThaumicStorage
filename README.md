@@ -1,5 +1,10 @@
 # ThaumicStorage
 Thaumcraft Addon mod
+Currently the only items are...
+Arcane Coal
+Arcane Coal Charged
+Arcane Coal Block
+Arcane Torch Dispenser
 
 ---
 # Credits (Send these people some $love$)
