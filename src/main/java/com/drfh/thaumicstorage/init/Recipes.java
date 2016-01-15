@@ -32,6 +32,10 @@ public class Recipes {
 				'2',new ItemStack(Items.stick,1,0)
 				});
 
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.torch,1,0),new Object[]{
+				"1",
+				'1',new ItemStack(TSItems.arcane_torch_dispenser,1,0)
+				});
 /*		GameRegistry.addShapedRecipe(new ItemStack(TSItems.arcane_coal),new Object[]{
 				"1",
 				"",

@@ -51,7 +51,7 @@ public class Thaumonomicon
 		//	Clean Clay - Costs Permutatio(EXCHANGE)String
 		
 		ItemStack		clay3Rec_cat[]={new ItemStack(Blocks.clay,1,0),new ItemStack(Blocks.hardened_clay,1,0),new ItemStack(Blocks.stained_hardened_clay,1,0)};
-		CrucibleRecipe clay3Rec = new CrucibleRecipe(new String[] {"TS.r.Entropy_clay"},new ItemStack(Items.clay_ball,3,0),clay3Rec_cat,new AspectList().add(Aspect.ENTROPY,1));
+		CrucibleRecipe	clay3Rec = new CrucibleRecipe(new String[] {"TS.r.Entropy_clay"},new ItemStack(Items.clay_ball,3,0),clay3Rec_cat,new AspectList().add(Aspect.ENTROPY,1));
 
 		ItemStack		arcaneCoalS_cat[]={new ItemStack(TSItems.arcane_coal,1,0)};
 		CrucibleRecipe arcaneCoalS_Rec = new CrucibleRecipe(new String[] {"TS.ALCHEMY"},new ItemStack(TSItems.arcane_coalS,1,0),arcaneCoalS_cat,new AspectList().add(Aspect.FIRE,32).add(Aspect.ENERGY,32).add(Aspect.EXCHANGE,20).add(Aspect.LIGHT,16));
@@ -106,7 +106,7 @@ public class Thaumonomicon
 		// Register Research Page
 		// Arcane Coal super-charged
 		new ResearchItem("TS.r.arcane_coalS",catName,new AspectList().add(Aspect.ORDER,3).add(Aspect.FIRE,3).add(Aspect.LIGHT,3),4,-1,1,
-					new ItemStack(TSItems.arcane_coal,1,1))
+					new ItemStack(TSItems.arcane_coalS,1,0))
 		.setParents("TS.r.arcane_coal")
 		.setSecondary()
 		.setPages(

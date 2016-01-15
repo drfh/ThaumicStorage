@@ -2,10 +2,13 @@ package com.drfh.thaumicstorage.common.items;
 
 import java.util.List;
 
+import com.drfh.thaumicstorage.Main;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -14,8 +17,8 @@ public class ArcaneTorchDispenser extends Item
 	public ArcaneTorchDispenser()
 	{
 		super();
-			this.setMaxStackSize(1);
-			this.setMaxDamage(64);
+		this.setMaxStackSize(1);
+		this.setMaxDamage(64);
 	}
 
 	private int getTorchSlotIndex(ItemStack[] stacks)
@@ -27,7 +30,13 @@ public class ArcaneTorchDispenser extends Item
 		}
 		return -1;
 	}
-
+/*	
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
+	{
+	//	Main.logger.info("onCreated: "+stack+"  "+playerIn);
+	}
+*/
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack stack)
@@ -40,7 +49,7 @@ public class ArcaneTorchDispenser extends Item
 	{
 		return true;
 	}
-	 
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack item, EntityPlayer play, List l, boolean par4)

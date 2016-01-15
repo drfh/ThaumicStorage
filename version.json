@@ -2,10 +2,10 @@
 	"versionList": [
 		{
 			"mcVersion":"Minecraft 1.8",
-			"modVersion":"0.2.0.7",
+			"modVersion":"0.2.0.9",
 			"changeLog": [
-                "Torches can now be places on walls... so embarrassing.  lol",
-                "Price for Arcane Coal Charged has been raised to 32 Fire; 32 Energy; 20 Exchange; 16 Light",
+                "Torch Dispenser now pulls from inventory until that is empty then uses aura to make torches.",
+                "Arcane Coal Charged now recharges in player inventory",
                 "Can craft Arcane Coal with sticks, planks and logs to make torches.  (Still not balanced)"
 			],
 			"updateURL":"http://minecraft.curseforge.com/projects/thaumicstorage/files/2274940/download",

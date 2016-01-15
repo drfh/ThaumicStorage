@@ -40,8 +40,9 @@ TS.p2.arcane_coal=This is just a small step down a path that most would scoff at
 TS.p3.arcane_coal=<LINE>How to use<LINE>1.  Used in any fuel slot.<BR>2.  Craft with stick(s) to make<BR>     torches.<BR>3.  Craft with Coal/Blaze Rod to recharge.<BR>4.  Put in top of furnace to recharge.
 
 tc.research_name.TS.r.arcane_coalS=Arcane Coal Enhanced
-tc.research_text.TS.r.arcane_coalS=How peculiar times... 2!
-TS.p0.arcane_coalS=Long text about supercharge.
+tc.research_text.TS.r.arcane_coalS=The incredable re-loadable coal!
+#tc.research_text.TS.r.arcane_coalS=How peculiar times... 2!
+TS.p0.arcane_coalS=You can't seem to use the coal after is expires, but the coal still persists.<BR>You think to yourself what is coal if not just aspects, why don't we try soaking it in essentia and see what we get.<LINE>Behold coal that is so dense with fire aspect that it draws it out of the air to rebalence itself.<BR>It only seems to recharged when a living thing holds it... how peculiar....
 
 tc.research_name.TS.r.arcane_coal_block=Arcane Coal Block
 tc.research_text.TS.r.arcane_coal_block=More fuel is always better.

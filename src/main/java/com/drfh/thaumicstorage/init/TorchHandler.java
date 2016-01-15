@@ -1,9 +1,11 @@
 package com.drfh.thaumicstorage.init;
 
+import com.drfh.thaumicstorage.Main;
 import com.drfh.thaumicstorage.common.items.ArcaneTorchDispenser;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -45,21 +47,37 @@ public class TorchHandler
 			else
 				return;
 		
+		InventoryPlayer		inventory = event.entityPlayer.inventory;
+		int					mainInventoryTorchSlotIndex = getTorchSlotIndex(inventory.mainInventory);
+		ItemStack			torchStack;
+		
 		processingEvent=true;
-		if(AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0&&AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0)
+		if(mainInventoryTorchSlotIndex!=NOTORCHESFOUND)
 		{
-			AuraHelper.drainAuraAvailable(event.world, event.pos, Aspect.AIR,1);
-			AuraHelper.drainAuraAvailable(event.world, event.pos, Aspect.FIRE,1);
+			torchStack=inventory.mainInventory[mainInventoryTorchSlotIndex];
+			
+		//	Main.logger.info("mainInventoryTorchSlotIndex: "+mainInventoryTorchSlotIndex);
+			((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
+				.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,face, 0.5f, 0.5f, 0.5f);
+			
+			torchStack.stackSize--;
+			if(torchStack.stackSize<0)
+				inventory.mainInventory[mainInventoryTorchSlotIndex] = null;
+			event.entityPlayer.openContainer.detectAndSendChanges();
+		}
+		else if(AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0&&AuraHelper.getAura(event.world,event.pos,Aspect.AIR)>0)
+		{
+			AuraHelper.drainAuraAvailable(event.world,event.pos,Aspect.AIR,1);
+			AuraHelper.drainAuraAvailable(event.world,event.pos,Aspect.FIRE,1);
 			//	Maybe take some more randomly to express inefficiency.
 
-			ItemStack	torchStack=new ItemStack(Blocks.torch,1);
-
+			torchStack=new ItemStack(Blocks.torch,1);
+			
 			((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
 			.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,
-					face, 0.5f, 0.5f, 0.5f);
-//			useItem(event,pos,torchStack);
+			face, 0.5f, 0.5f, 0.5f);
 		}
-//		event.entityPlayer.openContainer.detectAndSendChanges();
+			
 		processingEvent=false;
 		event.setCanceled(true);
 	}
