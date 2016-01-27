@@ -1,7 +1,7 @@
 {
 	"versionList": [
 		{
-			"mcVersion":"Minecraft 1.8.9",
+			"mcVersion":"Minecraft 1.8",
 			"modVersion":"0.2.1.0",
 			"changeLog": [
                 "Torch Dispenser now pulls only one torch from inventory. Sorry about that",
