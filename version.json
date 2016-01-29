@@ -4,9 +4,9 @@
 			"mcVersion":"Minecraft 1.8",
 			"modVersion":"0.2.0.9",
 			"changeLog": [
-                "Torch Dispenser now pulls from inventory until that is empty then uses aura to make torches.",
-                "Arcane Coal Charged now recharges in player inventory",
-                "Can craft Arcane Coal with sticks, planks and logs to make torches.  (Still not balanced)"
+                "Torch Dispenser now pulls only one torch from inventory. Sorry about that",
+                "",
+                ""
 			],
 			"updateURL":"http://minecraft.curseforge.com/projects/thaumicstorage/files/2275510/download",
 			"isDirectLink":"true",

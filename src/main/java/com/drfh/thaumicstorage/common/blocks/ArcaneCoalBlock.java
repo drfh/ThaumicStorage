@@ -1,27 +1,21 @@
 package com.drfh.thaumicstorage.common.blocks;
 
-import java.util.List;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
-import com.drfh.thaumicstorage.common.items.EnergyItem;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-public class ArcaneCoalBlock extends EnergyItem 
+public class ArcaneCoalBlock extends Block //implements EnergyItem
 {
-	public ArcaneCoalBlock()
+	public ArcaneCoalBlock(Material mat)
 	{
-		super();
-		this.setMaxDamage(2400*10);
-		super.setFuelLevel(2400*10);
-		this.setBurnTime(200);
+		super(mat);
+	//	this.setMaxDamage(2400*10);
+	//	super.setFuelLevel(2400*10);
+	//	this.setBurnTime(200);
 	}
 
-	@Override
-	public boolean hasContainerItem()
-	{
-		return true;
-	}
+//	@Override
+//	public boolean hasContainerItem()
+//	{
+//		return true;
+//	}
 }

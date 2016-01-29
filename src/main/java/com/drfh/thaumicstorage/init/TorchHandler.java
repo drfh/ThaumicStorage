@@ -60,7 +60,6 @@ public class TorchHandler
 			((EntityPlayerMP) event.entityPlayer).theItemInWorldManager
 				.activateBlockOrUseItem(event.entityPlayer, event.world, torchStack, pos,face, 0.5f, 0.5f, 0.5f);
 			
-			torchStack.stackSize--;
 			if(torchStack.stackSize<0)
 				inventory.mainInventory[mainInventoryTorchSlotIndex] = null;
 			event.entityPlayer.openContainer.detectAndSendChanges();

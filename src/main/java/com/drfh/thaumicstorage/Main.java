@@ -5,9 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.drfh.thaumicstorage.proxy.CommonProxy;
 
-import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -22,12 +22,12 @@ public class Main {
 	public static CommonProxy	proxy;
 
 	public static Logger			logger = LogManager.getLogger("ThaumicStorage");
+	@Instance(Reference.MOD_ID)
 	public static Main				instance;
 	public static TSCreativeTab		tscreative = new TSCreativeTab("tabCreativeTS");
 	
 	private static int modGuiIndex = 0;
 	public static final int GUI_ITEM_INV = modGuiIndex++;
-	public static Item itemstore;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e)
