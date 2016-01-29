@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "thaumicstorage:blocks/torch"
+        "layer0": "thaumicstorage:items/magic_pouch"
     },
     "display": {
         "thirdperson": {

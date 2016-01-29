@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "thaumicstorage:item/arcane_coal"
+        "layer0": "thaumicstorage:items/arcane_coal"
     },
     "display": {
         "thirdperson": {

@@ -29,6 +29,8 @@ public class CommonProxy
 
 	public void preInit(FMLPreInitializationEvent e)
 	{
+		Object		eventHook=new ServerEventHandler();
+
 		UpdateInfo = new NBTTagCompound();
 		UpdateInfo.setString("curseProjectName","thaumicstorage");
 		UpdateInfo.setString("curseFilenameParser", "ThaumicStorage-[].jar");
@@ -36,17 +38,13 @@ public class CommonProxy
 	//	FMLInterModComms.sendRuntimeMessage(Reference.MOD_ID,"VersionChecker","addCurseCheck",UpdateInfo);
 		FMLInterModComms.sendRuntimeMessage(Reference.MOD_ID,"VersionChecker","addVersionCheck",Reference.version_check_url);
 
-		TSItems.init();
-		TSItems.register();
 		TSBlocks.init();
 		TSBlocks.register();
-		MinecraftForge.EVENT_BUS.register(new TorchHandler());
+		TSItems.init();
+		TSItems.register();
 
 		addEventAndSpecialEventBus(new SmeltingHandler());
 
-		Object eventHook = new ServerEventHandler();
-
-		//FMLCommonHandler.instance().bus().register(eventHook);
 		MinecraftForge.EVENT_BUS.register(eventHook);	
 	}
 
@@ -66,9 +64,9 @@ public class CommonProxy
 		Thaumonomicon.setup();
 	}
 
-	private static void addEventAndSpecialEventBus(Object o) {
+	private static void addEventAndSpecialEventBus(Object o)
+	{
 		MinecraftForge.EVENT_BUS.register(o);
-		FMLCommonHandler.instance().bus().register(o);
 		Main.logger.info("Registered event handler: " + o.getClass());
 	}
 }

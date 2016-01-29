@@ -5,8 +5,13 @@ item.arcane_coalS.name=Arcane Coal Charged
 item.arcane_coal_block.name=Arcane Coal Block
 item.arcane_torch_dispenser.name=Arcane Torch Dispenser
 
+item.focus_storage.name=Storage Focus
+item.focus_torch.name=[WIP]Arcane Torch Focus
+
+
 #	Block Localization
 block.arcane_coal_block.name=Arcane Coal Block
+tile.tiny_block.name=Tiny Block
 
 #	Thaumcraft Stuff
 tc.research_category.ThaumicStorage=Thaumic Storage
@@ -32,12 +37,24 @@ itemGroup.tabCreativeTS=Thaumic Storage
 #                   <IMG>thaumcraft:textures/items/alumentum.png:0:0:255:255:0.0625</IMG>     <-- alumentum item icon
 
 #	Research
+#	Copied from Thaumcraft because ?
+tc.research_name.TS.CRUCIBLE=Basic Alchemy
+tc.research_text.TS.CRUCIBLE=Bubble and Boil
+tc.research_name.TS.ENTROPICPROCESSING=Advanced Entropy Manufacturing
+
+tc.research_name.TS.r.Entropy_clay=Entropy Clay
+tc.research_text.TS.r.Entropy_clay=Make clay
+#tc.research_text.TS.r.Entropy_clay=How peculiar times... 2!
+TS.p0.Entropy_clay=Make clay balls out of hardened clay.
+
 tc.research_name.TS.r.arcane_coal=Arcane Coal
 tc.research_text.TS.r.arcane_coal=Reusable coal?
 TS.p0.arcane_coal=Your frustration with the lack of fuel you have been able to gather have.  While heavily involved into your study of thaumic research, you have not been able to keep up with demand for fuel in your furnaces and other small devices.<BR>This frustration has lead you to conclude that there must be a better way.  Your study of the Thauminomicon has led you to conclude that there is always a better way.<BR>While coal and charcoal are plentyfull you hate to open a fueled device only to find it empty an your fuel buried in some chest some where.
-TS.p1.arcane_coal=Combinding<BR>* Great Wood<BR>* Fire Shard<BR>* Thaumium Nugets<BR>* Coal Block<BR>* Alumentum<BR>you have something that holds more burning power than a lump of coal but does not disintegrate when used.
+TS.p1.arcane_coal=With a few bits and bobs you now have something that holds more burning power than a lump of coal but does not disintegrate when used.
+#Combinding<BR>* Great Wood<BR>* Fire Shard<BR>* Thaumium Nugets<BR>* Coal Block<BR>* Alumentum<BR>
 TS.p2.arcane_coal=This is just a small step down a path that most would scoff at even existing.<BR>None the less and you are sure that is more to this story......<BR> and the end of this research, likely on a far horizon, you see in your mind a warped and dangerous place.  Let it not be said that a little danger stopped any thaumaturgy, especialy one as brillient as you.<BR>Ow well, lets SCAN over this new item and see what we can learn from it.
 TS.p3.arcane_coal=<LINE>How to use<LINE>1.  Used in any fuel slot.<BR>2.  Craft with stick(s) to make<BR>     torches.<BR>3.  Craft with Coal/Blaze Rod to recharge.<BR>4.  Put in top of furnace to recharge.
+
 
 tc.research_name.TS.r.arcane_coalS=Arcane Coal Enhanced
 tc.research_text.TS.r.arcane_coalS=The incredable re-loadable coal!
@@ -51,3 +68,7 @@ TS.p0.arcane_coal_block=Long text about more is always better.
 tc.research_name.TS.r.arcane_torch_dispenser=Arcane Torch Dispensor
 tc.research_text.TS.r.arcane_torch_dispenser=Free Torches per vis
 TS.p0.arcane_torch_dispenser=Ah, Finaly a light source that lasts as long as you do.  An upgrade to your Archane Coal to make it more usefull.  After researching reusable Archane Coal, you have decided that you are annoyed with carrying stacks of torches with you everywhere you go.  You are sure it can help with mobile lighting in your fast paced life, but that may be a tall order.<BR>For now you just want an abundant supply of torches that won't put a dent in your pocket.<BR>Consumes Air and Fire vis. to place a tourch.<BR>Be carefull of flux.
+
+tc.research_name.TS.r.focus_torch=[WIP]Arcane Torch Focus
+tc.research_text.TS.r.focus_torch=Free torches, as far as the eye can see
+TS.p0.focus_torch_rec=A wand focus that can cast light into hard to reach places.<BR>With a few upgrades this thing could be indispensable.<BR<BR>This is very much a work in progress and I am working on the Upgrade and LOS code.

@@ -3,8 +3,8 @@ package com.drfh.thaumicstorage.common.blocks;
 import java.util.Random;
 
 import com.drfh.thaumicstorage.Main;
+import com.drfh.thaumicstorage.common.tileEntity.TileEntityTiny;
 
-import TileEntityTiny.TileEntityTiny;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -27,12 +27,13 @@ public class BlockTiny extends BlockContainer
 	{
 		super(material);
 		setUnlocalizedName("tiny_block");
-	//	this.setCreativeTab(CreativeTabs.tabBlock);
-	//	this.setHardness(2.0F);
-	//	this.setResistance(6.0F);
-	//	this.setLightLevel(1.0F);
-	//	this.setHarvestLevel("pickaxe", 3);
-	//	this.setStepSound(soundTypeMetal);
+		setCreativeTab(CreativeTabs.tabBlock);
+		this.setHardness(2.0F);
+		this.setResistance(6.0F);
+		this.translucent=false;
+		this.setLightLevel(1.0F);
+		this.setHarvestLevel("pickaxe", 3);
+		this.setStepSound(soundTypeMetal);
 	}
 
 /*	public BlockTiny()
@@ -44,12 +45,6 @@ public class BlockTiny extends BlockContainer
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 */
-//	@Override
-//	@SideOnly(Side.CLIENT)
-//	public void registerBlockIcons(IIconRegister iconRegister)
-//	{
-	//	this.blockIcon = iconRegister.registerIcon("thaumicstorage:tiny_block");
-//	}
 
 	@Override
 	public boolean isOpaqueCube()
@@ -65,12 +60,19 @@ public class BlockTiny extends BlockContainer
 	
 	public TileEntity createNewTileEntity(World world, int meta)
 	{
-		return new TileEntityTiny();//super.createNewTileEntity(world,meta);
+		TileEntityTiny		tile=new TileEntityTiny();
+		tile.setWorldObj(world);
+		return tile;//super.createNewTileEntity(world,meta);
 	}
 
+    @Override
+	public int getRenderType()
+    {
+        return 3;
+    }
+    
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
-	//	public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int metadata, float what, float these, float are)
 	{
 		TileEntity tileEntity = world.getTileEntity(pos);
 		if (tileEntity == null || player.isSneaking())
@@ -84,7 +86,6 @@ public class BlockTiny extends BlockContainer
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state)
-	//	public void breakBlock(World world, int x, int y, int z, int par5, int par6)
 	{
 		dropItems(world, pos.getX(), pos.getY(), pos.getZ());
 		super.breakBlock(world, pos,state);

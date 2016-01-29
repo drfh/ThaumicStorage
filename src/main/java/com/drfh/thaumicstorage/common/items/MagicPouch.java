@@ -1,57 +1,61 @@
 package com.drfh.thaumicstorage.common.items;
 
 import com.drfh.thaumicstorage.Main;
+import com.drfh.thaumicstorage.common.tileEntity.TileEntityTiny;
 
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
 
-public class MagicPouch extends Item
+public class MagicPouch extends Item implements ITileEntityProvider
 {
-/*	public MagicPouch(int par1)
+	public MagicPouch()
 	{
-		super(par1);
-		// ItemStacks that store an NBT Tag Compound are limited to stack size of 1
-		setMaxStackSize(1);
-		// you'll want to set a creative tab as well, so you can get your item
-		setCreativeTab(CreativeTabs.tabMisc);
+		super();
+		this.setMaxStackSize(1);
+		this.setMaxDamage(0);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		TileEntityTiny		tile=new TileEntityTiny();
+		tile.setWorldObj(world);
+		return tile;//super.createNewTileEntity(world,meta);
 	}
 
 	// Without this method, your inventory will NOT work!!!
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 1; // return any value greater than zero
-	}
-   
-    	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
+	public int getMaxItemUseDuration(ItemStack stack)
 	{
-		if (!world.isRemote)
-		{
-			// If player not sneaking, open the inventory gui
-			if (!player.isSneaking()) {
-				player.openGui(InventoryItemMain.instance, InventoryItemMain.GUI_ITEM_INV, world, 0, 0, 0);
-			}
-			
-			// Otherwise, stealthily place some diamonds in there for a nice surprise next time you open it up :)
-			else {
-				new InventoryItem(player.getHeldItem()).setInventorySlotContents(0, new ItemStack(Item.diamond,4));
-			}
-		}
-		
-		return itemstack;
+		return 1; // return any value greater than zero
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister)
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
-		this.itemIcon = iconRegister.registerIcon("inventoryitemmod:" + this.getUnlocalizedName().substring(5));
+		if (!world.isRemote) // On server
+		{
+			// If player not sneaking, open the inventory gui
+			if (!player.isSneaking())
+			{
+				Main.logger.info("onItemRightClick: onServer");
+				player.openGui(Main.instance, 1, world,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+			}
+		}
+		else	//	On client
+		{
+			Main.logger.info("onItemRightClick: onClient");
+			player.openGui(Main.instance, 1, world,player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		}
+		return itemstack;
 	}
-	
-	
-	@Override
+
+	/*	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		// TODO Auto-generated method stub
@@ -68,5 +72,5 @@ public class MagicPouch extends Item
 		}
 		return null;
 	}
-*/
+	 */
 }

@@ -16,7 +16,7 @@ public class ServerProxy extends CommonProxy
 		super.preInit(e);
 		
 		ServerEventHandler eventHandler = new ServerEventHandler();
-		FMLCommonHandler.instance().bus().register(eventHandler);
+	//	FMLCommonHandler.instance().bus().register(eventHandler);
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 	}
 

@@ -2,13 +2,11 @@
 	"versionList": [
 		{
 			"mcVersion":"Minecraft 1.8",
-			"modVersion":"0.2.0.9",
+			"modVersion":"0.2.1.1",
 			"changeLog": [
-                "Torch Dispenser now pulls only one torch from inventory. Sorry about that",
-                "",
-                ""
+                "TorchHandler now works correctly. :)"
 			],
-			"updateURL":"http://minecraft.curseforge.com/projects/thaumicstorage/files/2275510/download",
+			"updateURL":"http://minecraft.curseforge.com/projects/thaumicstorage/files/2278953/download",
 			"isDirectLink":"true",
 			"newFileName":""
 		}

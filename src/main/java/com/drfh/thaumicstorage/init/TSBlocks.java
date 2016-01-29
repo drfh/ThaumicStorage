@@ -21,7 +21,7 @@ public class TSBlocks {
 	public static void init()
 	{
 		arcane_coal_block=new ArcaneCoalBlock(Material.wood).setUnlocalizedName("arcane_coal_block").setCreativeTab(Main.tscreative);
-		tiny_block=new BlockTiny(Material.clay).setUnlocalizedName("tiny_block").setCreativeTab(Main.tscreative);
+		tiny_block=new BlockTiny(Material.clay).setCreativeTab(Main.tscreative);
 	}
 
 	public static void register()
@@ -32,12 +32,14 @@ public class TSBlocks {
 
 	public static void registerRenders()
 	{
+		registerRender(arcane_coal_block);
 		registerRender(tiny_block);
 	}
 
 	public static void registerRender(Block block)
 	{
 		Item item=Item.getItemFromBlock(block);
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5),"inventory"));
+		
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item,0,new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5),"inventory"));
 	}
 }

@@ -3,6 +3,7 @@ package com.drfh.thaumicstorage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.drfh.thaumicstorage.init.TorchHandler;
 import com.drfh.thaumicstorage.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -45,5 +46,6 @@ public class Main {
 	public void postInit(FMLPostInitializationEvent e)
 	{
 		proxy.postInit(e);
+//		TorchHandler.init();
 	}
 }

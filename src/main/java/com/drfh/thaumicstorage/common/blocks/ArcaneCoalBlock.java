@@ -12,6 +12,7 @@ public class ArcaneCoalBlock extends Block //implements EnergyItem
 	//	super.setFuelLevel(2400*10);
 	//	this.setBurnTime(200);
 	}
+	
 
 //	@Override
 //	public boolean hasContainerItem()
